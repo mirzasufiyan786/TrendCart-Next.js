@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    background-color:#f3f4f6;
+}
+.mid{
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.borderC{
+    border-width: "1px";
+    border-color: "#E0E0E0";
+}
