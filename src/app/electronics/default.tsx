@@ -123,7 +123,7 @@ export default function Electronics() {
         <div className="h-auto mt-8 w-[100%]  flex flex-col items-center ">
             <div className="space-y-3  flex flex-col items-center">
                 {products.map((item, index) => (
-                    <div className="relative h-[350px]  w-[90%]  border-[1px] border-borderColor rounded-lg bg-white py-5  px-8 flex items-start gap-10 flex-col " key={index}>
+                    <div className="relative  w-[90%]  border-[1px] border-borderColor rounded-lg bg-white py-5  px-8 flex items-start gap-10 flex-col " key={index}>
                         <div>
                             <img src={`/${item.pic}`} alt="" className="w-[150px] h-[150px]" />
                         </div>
