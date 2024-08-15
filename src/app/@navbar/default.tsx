@@ -20,14 +20,11 @@ import LanguageCurrencyDropdown from '@/component/LanguageCurrency';
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("All Type");
-  const [activeItem, setActiveItem] = useState('home');
+  const [activeItem, setActiveItem] = useState(null);
   const [toggle, setToggle] = useState(false)
 
   const handleItemClick = (item:any) => {
-    
     setActiveItem(item);
-    
-    handeltoggle();
   };
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -160,103 +157,101 @@ export default function Navbar() {
         </div>
       </div>
     </main>
-    <div className="relative  md:hidden h-[40px]  w-[88%] border-[1px] border-borderColor rounded-lg flex items-center gap-3 px-3 ms-5  text-gray-500 ">
+    <div className="md:hidden h-[40px]  w-[88%] border-[1px] border-borderColor rounded-lg flex items-center gap-3 px-3 ms-5  text-gray-500 ">
       <IoSearchOutline/>
       <input type="text" name="" id="" placeholder="Search"  className="outline-none h-[35px] w-[280px] "/>
     </div>
     {/* ------------------ */}
   
-    {
-  toggle && (
-    <div className='md:hidden z-50 fixed top-24 left-0 h-[60%] w-[280px] bg-white'>
-      <div className='bg-gray-200 space-y-2 w-[280px] h-[20%] p-5'>
-        <div>
-          <img src="/profile.png" alt="" />
+        {
+          toggle && (
+            <div className='md:hidden z-50 absolute top-0 right-0 h-[vh] overflow-scroll w-[280px] bg-white'>
+        <div className='bg-gray-200 space-y-2 w-[280px] h-[20%] p-5'>
+          <div>
+            <img src="/profile.png" alt="" />
+          </div>
+          <div className='flex items-center gap-2'>
+            <p>Sign in</p>
+            <span className='h-[20px] w-[1px] bg-dark'></span>
+            <p>Register</p>
+          </div>
         </div>
-        <div className='flex items-center gap-2'>
-          <p>Sign in</p>
-          <span className='h-[20px] w-[1px] bg-dark'></span>
-          <p>Register</p>
+        <div className='p-2 h-[80%] overflow-y-scroll'>
+          <ul>
+            <li
+              className={`flex items-center gap-3 p-3 ${activeItem === 'home' ? 'bg-gray-100 font-semibold' : ''}`}
+              onClick={() => handleItemClick('home')}
+            >
+              <span><IoHomeOutline /></span>
+              <p><Link href="/">Home</Link></p>
+            </li>
+            <li
+              className={`flex items-center gap-3 p-3 ${activeItem === 'categories' ? 'bg-gray-100 font-semibold' : ''}`}
+              onClick={() => handleItemClick('categories')}
+            >
+              <span><CiBoxList /></span>
+              <p><Link href="/electronics">Electronics</Link></p>
+            </li>
+            <li
+              className={`flex items-center gap-3 p-3 ${activeItem === 'favourites' ? 'bg-gray-100 font-semibold' : ''}`}
+              onClick={() => handleItemClick('favourites')}
+            >
+              <span><CiHeart /></span>
+              <p>Favourites</p>
+            </li>
+            <li
+              className={`flex items-center gap-3 p-3 ${activeItem === 'orders' ? 'bg-gray-100 font-semibold' : ''}`}
+              onClick={() => handleItemClick('orders')}
+            >
+              <span><TbReorder /></span>
+              <p><Link href="/cart">My Orders</Link></p>
+            </li>
+          </ul>
+          <hr />
+          <ul>
+            <li className='flex items-center gap-3 p-3'>
+              <LanguageCurrencyDropdown />
+            </li>
+            <li
+              className={`flex items-center gap-3 p-3 ${activeItem === 'contact' ? 'bg-gray-100 font-semibold' : ''}`}
+              onClick={() => handleItemClick('contact')}
+            >
+              <span><FaHeadset /></span>
+              <p>Contact Us</p>
+            </li>
+            <li
+              className={`flex items-center gap-3 p-3 ${activeItem === 'about' ? 'bg-gray-100 font-semibold' : ''}`}
+              onClick={() => handleItemClick('about')}
+            >
+              <span><BsGrid1X2 /></span>
+              <p><Link href="/about">Home</Link></p>
+            </li>
+          </ul>
+          <hr />
+          <ul>
+            <li
+              className={`flex items-center gap-3 p-3 ${activeItem === 'user-agreement' ? 'bg-gray-100 font-semibold' : ''}`}
+              onClick={() => handleItemClick('user-agreement')}
+            >
+              <p>User Agreement</p>
+            </li>
+            <li
+              className={`flex items-center gap-3 p-3 ${activeItem === 'partnership' ? 'bg-gray-100 font-semibold' : ''}`}
+              onClick={() => handleItemClick('partnership')}
+            >
+              <p>Partnership</p>
+            </li>
+            <li
+              className={`flex items-center gap-3 p-3 ${activeItem === 'privacy-policy' ? 'bg-gray-100 font-semibold' : ''}`}
+              onClick={() => handleItemClick('privacy-policy')}
+            >
+              <p>Privacy Policy</p>
+            </li>
+          </ul>
         </div>
       </div>
-      <div className='p-2 h-[80%] overflow-y-scroll'>
-        <ul>
-          <li
-            className={`flex items-center gap-3 p-3 ${activeItem === 'home' ? 'bg-gray-100 font-semibold' : ''}`}
-            onClick={() => handleItemClick('home')}
-          >
-            <span><IoHomeOutline /></span>
-            <p><Link href="/">Home</Link></p>
-          </li>
-          <li
-            className={`flex items-center gap-3 p-3 ${activeItem === 'categories' ? 'bg-gray-100 font-semibold' : ''}`}
-            onClick={() => handleItemClick('categories')}
-          >
-            <span><CiBoxList /></span>
-            <p><Link href="/electronics/gridrview">Categories</Link></p>
-          </li>
-          <li
-            className={`flex items-center gap-3 p-3 ${activeItem === 'favourites' ? 'bg-gray-100 font-semibold' : ''}`}
-            onClick={() => handleItemClick('favourites')}
-          >
-            <span><CiHeart /></span>
-            <p>Favourites</p>
-          </li>
-          <li
-            className={`flex items-center gap-3 p-3 ${activeItem === 'orders' ? 'bg-gray-100 font-semibold' : ''}`}
-            onClick={() => handleItemClick('orders')}
-          >
-            <span><TbReorder /></span>
-            <p><Link href="/cart">My Orders</Link></p>
-          </li>
-        </ul>
-        <hr />
-        <ul>
-          <li className='flex items-center gap-3 p-3'>
-            <LanguageCurrencyDropdown />
-          </li>
-          <li
-            className={`flex items-center gap-3 p-3 ${activeItem === 'contact' ? 'bg-gray-100 font-semibold' : ''}`}
-            onClick={() => handleItemClick('contact')}
-          >
-            <span><FaHeadset /></span>
-           
-            <p><Link href="/about">About</Link></p>
-          </li>
-          <li
-            className={`flex items-center gap-3 p-3 ${activeItem === 'about' ? 'bg-gray-100 font-semibold' : ''}`}
-            onClick={() => handleItemClick('about')}
-          >
-            <span><BsGrid1X2 /></span>
-            <p>Contact Us</p>
-          </li>
-        </ul>
-        <hr />
-        <ul>
-          <li
-            className={`flex items-center gap-3 p-3 ${activeItem === 'user-agreement' ? 'bg-gray-100 font-semibold' : ''}`}
-            onClick={() => handleItemClick('user-agreement')}
-          >
-            <p>User Agreement</p>
-          </li>
-          <li
-            className={`flex items-center gap-3 p-3 ${activeItem === 'partnership' ? 'bg-gray-100 font-semibold' : ''}`}
-            onClick={() => handleItemClick('partnership')}
-          >
-            <p>Partnership</p>
-          </li>
-          <li
-            className={`flex items-center gap-3 p-3 ${activeItem === 'privacy-policy' ? 'bg-gray-100 font-semibold' : ''}`}
-            onClick={() => handleItemClick('privacy-policy')}
-          >
-            <p>Privacy Policy</p>
-          </li>
-        </ul>
-      </div>
-    </div>
-  )
-}
-
+          )
+        }
       
     </>
   );
